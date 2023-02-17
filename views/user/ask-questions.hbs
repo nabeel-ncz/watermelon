@@ -1,0 +1,59 @@
+<section>
+    <div class="container-fluid" style="padding-left: 90px;">
+        <div class="row">
+            <div class="col-12"
+                style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+
+                
+                    <h4 class="ask-a-que-h4">Ask Your Question ?</h4>
+                
+                
+                <img src="images\undraw_Questions_re_1fy7.png" alt="" style="max-width: 300px; height: auto; margin-bottom: 10px;">
+
+                <div class="form-controls-div">
+                    <form action="/ask-question" method="post" enctype="multipart/form-data">
+                    <input type="text" class="form-control" value="{{user._id}}" name="userId" style="display: none;">
+                        <div class="row">
+                            <div class="col-12 col-sm-6 mb-2">
+                                <input type="text" class="form-control" placeholder="First name" name="name"
+                                    aria-label="First name" required>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input type="email" class="form-control" id="exampleFormControlInput1" name="email"
+                                    placeholder="Email address" required>
+                            </div>
+                        </div>
+                        <div class="">
+                            <label for="exampleFormControlTextarea2" class="form-label txt-area-label">Write your question here </label>
+                            <textarea class="form-control" name="question" id="exampleFormControlTextarea2" rows="3" placeholder="ask any doubts related to our foods and servieces"></textarea>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: center; width: 100%; margin-top: 10px;">
+                        <button class="btn btn-warning" type="submit">Send</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.ask-a-que-h4{
+    font-size: 34px;
+    letter-spacing: 2px;
+    overflow: hidden;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 500;
+}
+.form-controls-div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+.txt-area-label{
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 18px;
+    margin-left: 1px;
+}
+</style>

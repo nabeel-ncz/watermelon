@@ -1,0 +1,36 @@
+<section>
+    <div class="container-fluid user-message-container" style="padding-left: 90px;">
+
+        <div class="row" style="display: flex; justify-content: center; align-items: center;">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4" style="display: flex; justify-content: center; align-items: center;">
+                <img src="images/undraw_online_reading_np7n (1).png" alt="">
+            </div>
+            <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                {{#each messages}}
+                <div class="card text-center mb-2">
+                    <div class="card-body">
+                        <h6 class="card-text">Your question : {{this.question}}</h6>
+                        <p class="card-text">{{this.faqAnswer}}</p>
+                        <button onclick="removeFromUserMessages('{{this._id}}')" class="btn btn-dark" style="font-size: x-small;">Viewed</button>
+                    </div>
+                </div>
+                {{/each}}
+
+                
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .user-message-container .col-lg-4 img {
+        width: 380px;
+        height: auto;
+    }
+
+    .user-message-container .col-md-4 img {
+        width: 280px;
+        height: auto;
+    }
+</style>

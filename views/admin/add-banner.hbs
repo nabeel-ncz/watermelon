@@ -1,0 +1,75 @@
+<section>
+    <div class="container-fluid" style="padding-left: 90px;">
+        <div class="row d-flex justify-content-center" style="padding: 10px 0px 10px 10px;">
+            <h5  style="margin: 16px 0px;"><u>Recent Banners</u></h5>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                <div class="card" style="width: 14rem;">
+                    <img src="\images\banner\coffee.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">added date : 203m.,.4ip4029402in</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                <div class="card" style="width: 14rem;">
+                    <img src="\images\banner\coffee.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                <div class="card" style="width: 14rem;">
+                    <img src="\images\banner\coffee.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                <div class="card" style="width: 14rem;">
+                    <img src="\images\banner\coffee.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                    </div>
+                </div>
+            </div>
+        <div class="row d-flex justify-content-center" style="padding: 10px 0px 10px 10px;">
+            <h5 style="margin: 16px 0px;"><u>Create new banner</u></h5>
+            <div class="col-12 col-md-6">
+                <form action="/admin/add-banner" method="post" enctype="multipart/form-data">
+
+                    <div class="mb-3 mt-2">
+                        <label for="formFile" class="form-label">Select Image</label>
+                        <img src="/images/product-images/{{products._id}}.{{ext}}" alt=""
+                            style="width: 40px; height: auto; margin-left: 20px;" id="imageView">
+                        <input class="form-control mt-3" type="file" id="formFile" name="Image"
+                            onchange="viewImage(event)">
+                    </div>
+
+                    <label for="" class="mt-2">Choose image extension</label>
+                    <div class="form-check form-switch mt-2">
+                        <input class="form-check-input mt-2" type="radio" role="switch" name="imageExt" value="jpg">
+                        <label class="form-check-label mt-2" for="flexSwitchCheckDefault">JPG</label>
+                    </div>
+                    <div class="form-check form-switch mt-2 mb-3">
+                        <input class="form-check-input" type="radio" role="switch" name="imageExt" value="png">
+                        <label class="form-check-label" for="flexSwitchCheckChecked">PNG</label>
+                    </div>
+                    <div class="form-check form-switch mt-2 mb-3">
+                        <input class="form-check-input" type="radio" role="switch" name="imageExt" value="jpeg">
+                        <label class="form-check-label" for="flexSwitchCheckChecked">JPEG</label>
+                    </div>
+
+                    <div style="width: 100%; display: flex; justify-content: center;">
+                        <button type="submit" class="btn btn-primary ">Create</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

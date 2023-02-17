@@ -1,0 +1,152 @@
+<section>
+    <div class="container-fluid" style="padding-left: 90px;">
+
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-6">
+                <h5 class="overflow-hidden my-3">New Messages</h5>
+                {{#each messages}}
+                <div class="card admin-message-card">
+                    <div class="card-header">
+                        <div>
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span>{{this.name}}</span>
+                        </div>
+                        <div style="width: 100%; justify-content: flex-end;">
+                            <a href="/admin/remove-from-messages?id={{this._id}}" class="btn btn-dark"
+                                style="font-size: x-small; margin-right: 10px;">Remove</a>
+
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-title overflow-hidden">{{this.email}}</h6>
+                        <p class="card-text">Que : {{this.question}}</p>
+                        <button onclick="sendReplay('{{this._id}}')" class="btn btn-warning" style="font-size: x-small;"
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">Replay</button>
+                    </div>
+                </div>
+                {{/each}}
+
+            </div>
+
+
+            <div class="col-12 col-md-6 col-lg-6">
+                <h5 class="overflow-hidden my-3">Recent Faqs</h5>
+                {{#each faqs}}
+
+                <div class="accordion" id="accordion{{this._id}}">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading{{this._id}}">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse{{this._id}}" aria-expanded="true" aria-controls="collapse{{this._id}}">
+                                {{this.question}}
+                            </button>
+                        </h2>
+                        <div id="collapse{{this._id}}" class="accordion-collapse collapse show" aria-labelledby="heading{{this._id}}"
+                            data-bs-parent="#accordion{{this._id}}">
+                            <div class="accordion-body">
+                                {{this.faqAnswer}}
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                {{/each}}
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="modal fade" id="staticBackdrop-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body"
+                    style="padding: 30px 10px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+
+                    <h6 class="fw-400 overflow-hidden">question : <span class="fw-light"
+                            id="staticBackdrop-1-question"></span>
+                    </h6>
+                    <h6 class="fw-400 overflow-hidden">email : <span class="fw-light"
+                            id="staticBackdrop-1-email"></span></h6>
+                    <form action="/admin/admin-messages" method="post" enctype="multipart/form-data">
+
+                        <input type="text" name="userId" id="userId-input" value="" style="display: none;">
+                        <input type="text" name="question" id="question-input" value="" style="display: none;">
+                        <input type="text" name="questionId" id="que-id-input" value="" style="display: none;">
+                        <div class="mt-3">
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">send replay</label>
+                                <textarea class="form-control" name="faqAnswer" id="exampleFormControlTextarea4"
+                                    placeholder="Write...." rows="3"></textarea>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="faqsTrue" name="faqsStatus"
+                                    id="flexCheckChecked" checked>
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    Also view on FAQs
+                                </label>
+                            </div>
+
+
+
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" style="font-size: small;"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-warning" style="font-size: small;">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+<style>
+    .admin-message-card .card-header {
+        width: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .admin-message-card .card-header div {
+        margin-top: 5px;
+        width: 100%;
+        display: flex;
+        align-items: baseline;
+    }
+
+    .admin-message-card h6 {
+        font-size: 14px;
+    }
+
+    .admin-message-card .card-header span {
+        font-size: 14px;
+        overflow: hidden;
+    }
+
+    .admin-message-card p {
+        font-size: 12px;
+    }
+
+    .admin-message-card .card-header i {
+        opacity: 50%;
+        font-size: 28px;
+        margin-right: 6px;
+        margin-left: 2px;
+    }
+</style>
+

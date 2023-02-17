@@ -1,0 +1,148 @@
+<header>
+  <div class="container-fluid home-section  ">
+    <nav class="navbar navbar-expand-md ">
+
+      <a class="navbar-brand" href="#"><img src="/images/logo/Logo.png" class="mainLogo" alt=""></a>
+      <div class="d-flex justify-content-end form-style-4-div" style="width: 80%; padding-right: 50px;">
+        <!--<form class="form-style-4" action="" method="post">
+          <label for="field1">
+            <span class="span-1">
+              <i class="fa-solid fa-location-crosshairs"></i>
+            </span><input type="text" name="field1" placeholder="Enter your location" required="true" />
+          </label>
+        </form>-->
+
+        {{#if user}}
+        <a href="/sign-out"><button class="button-55" role="button">Sign out</button></a>
+        {{else}}
+        <a href="/log-in"><button class="button-55" role="button">Log in</button></a>
+        <a href="/sign-up"><button class="button-55" id="button-55" role="button">Sign up</button></a>
+        {{/if}}
+
+      </div>
+
+      <section>
+        <div class="sidebar">
+          <div class="logo-details">
+
+            <img src="images/logo/Logo.png" class="icon" alt="">
+            <i class='bx bx-menu' id="btn"></i>
+          </div>
+          <ul class="nav-list">
+            <li>
+              <i class='bx bx-search'></i>
+              <input type="text" id="main-search-box" placeholder="Search...">
+              <span class="tooltip">Search</span>
+              <span class="main-search-box-span">
+                {{#each products}}
+                <div class="header-search-prod-name">
+                  <div>
+                    <span>{{this.Name}}</span>
+                    <button onclick="popupDetails('{{this._id}}')" class="card-button-2" data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"><i class="fa-solid fa-eye"></i></button>
+                  </div>
+
+                  <hr>
+                </div>
+                {{/each}}
+
+              </span>
+            </li>
+            <li>
+              <a href="/">
+                <i class="bi bi-house-door"></i>
+                <span class="links_name">Home</span>
+              </a>
+              <span class="tooltip">Home</span>
+            </li>
+            <li>
+              <a href="/log-in">
+                <i class='bx bx-user'></i>
+                <span class="links_name">User</span>
+              </a>
+              <span class="tooltip">User</span>
+            </li>
+            <li>
+              <a href="/cart">
+                <i class="bi bi-box2-heart  position-relative" fdprocessedid="q3esbb"></i>
+                <span style="left: 28px; bottom: 20px; padding: 4px; font-weight: 400;" id="cart-quantity-badge"
+                  class="position-absolute start-25 translate-middle badge bg-danger">
+                  {{cartCount}}
+                </span>
+                <span class="links_name">Cart</span>
+              </a>
+              <span class="tooltip">Cart</span>
+            </li>
+            <li>
+              <a href="/view-orders">
+                <i class='bx bx-cart-alt position-relative'></i>
+                <span style="left: 26px; bottom: 20px; padding: 4px; font-weight: 400;" id="order-quantity-badge"
+                  class="position-absolute start-25 translate-middle badge bg-success">
+                  {{orderCount}}
+                </span>
+                <span class="links_name">Order</span>
+              </a>
+              <span class="tooltip">Order</span>
+            </li>
+
+            <li>
+              <a href="/ask-questions">
+                <i class="bi bi-question-octagon"></i>
+                <span class="links_name">Ask?</span>
+              </a>
+              <span class="tooltip">Ask?</span>
+            </li>
+            {{#if user}}
+            <li>
+              <a href="/user-messages?id={{user._id}}">
+                <i class='bx bx-chat position-relative'></i>
+                <span style="left: 25px; bottom: 20px; padding: 4px; font-weight: 400;"
+                  class="position-absolute start-25 translate-middle badge bg-warning">{{messageCount}}
+                </span>
+
+                <span class="links_name">Messages</span>
+              </a>
+              <span class="tooltip">Messages</span>
+            </li>
+            {{/if}}
+            <li>
+              <a href="/about">
+                <i class='bx bx-info-square'></i>
+                <span class="links_name">Help</span>
+              </a>
+              <span class="tooltip">Help</span>
+            </li>
+
+
+            <li class="profile">
+              <div class="profile-details">
+                <!--<img src="profile.jpg" alt="profileImg">-->
+                <div class="name_job">
+                  <div class="name" id="acc_name">
+                    {{#if user}}
+                    {{user.Name}}
+                    {{else}}
+                    user
+                    {{/if}}
+                  </div>
+                  <div class="job" id="acc_email">
+                    {{#if user}}
+                    {{user.Email}}
+                    {{else}}
+                    email@gmail.com
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+
+              <a href="/sign-out" id="log_out_a">
+                <i class='bx bx-log-out' id="log_out"></i>
+
+              </a>
+
+
+            </li>
+          </ul>
+        </div>
+      </section>
+</header>

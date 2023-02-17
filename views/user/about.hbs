@@ -1,0 +1,158 @@
+<section>
+    <div class="container-fluid about-container" style="padding-left: 90px;">
+        <div class="h4-para-div">
+            <div class="h4-div my-3">
+            <h4>About us</h4>
+        </div>
+        <div class="para-div">
+            <p>Welcome to Watermelon, the new fast food company taking the culinary world by storm! With our main branch
+                located in Calicut, we are proud to have established sub-branches in 13 cities, and we are always
+                looking to expand! We believe in making life easier for our customers, which is why we offer free
+                delivery in all 13 cities.
+            </p>
+            <p>
+                Our menu is full of delicious and satisfying options, including burgers, pizza, juices, coffees, a
+                variety of rice dishes, snacks, and mouth-watering fried chicken. Whether you're in the mood for
+                something sweet or savory, there's something for everyone at Watermelon!
+            </p>
+            <p>
+                To ensure that you have the best experience possible, we have designed our website, www.watermelon.com,
+                to be user-friendly and packed with features. From ordering online to tracking your delivery, we have
+                made it easy for you to get your food, fast!
+            </p>
+            <p>
+                At Watermelon, we are committed to using only the freshest and highest quality ingredients, to ensure
+                that every bite you take is bursting with flavor. Whether you're grabbing a quick bite on your lunch
+                break or treating your family to a night in, we promise to make you smile with every meal.
+            </p>
+            <p>
+                We are passionate about making our customers happy, and we believe that the key to success is simple:
+                quality food, fast service, and a friendly smile. So come and join us at Watermelon, where every day is
+                a celebration of good food and good times!</p>
+        </div>
+        </div>
+        
+<div class="h4-ol-div">
+    <div class="h4-div my-3">
+            <h4>FAQs</h4>
+        </div>
+        <div class="ol-div">
+
+            
+                {{#each faqs}}
+                <p><span>que :</span> {{this.question}} <br>
+                <span style="font-weight: 500;">ans: {{this.faqAnswer}}</span></p><br>
+                {{/each}}
+            
+        </div>
+</div>
+        
+<div class="h4-team-div">
+    <div class="h4-div my-3">
+            <h4>Our Team</h4>
+        </div>
+        <div class="team-div">
+            <p>
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+                Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est
+                eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas
+                assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum
+                necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum
+                rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut
+                perferendis doloribus asperiores repellat."
+            </p>
+        </div>
+</div>
+        
+
+    </div>
+</section>
+
+<style>
+    .about-container h4 {
+        font-size: 34px;
+        font-weight: 500;
+        font-family: 'Oswald', sans-serif;
+        letter-spacing: 2px;
+    }
+
+    .about-container .h4-div {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-container h4 {
+        overflow: hidden;
+    }
+    .about-container .h4-para-div p{
+        background-image: url(images/abstract-textured-backdrop-background.jpg);
+        background-size: cover;
+        background-repeat: repeat;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: rgba(0, 0, 0, 0.27);
+         font-weight: 600;
+        -webkit-font-smoothing: antialiased;
+    }
+    .about-container .para-div {
+        width: 100%;
+        font-weight: 400;
+        opacity: 96%;
+        font-family: 'Oswald', sans-serif;
+        letter-spacing: 2px;
+        word-spacing: 6px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 60px;
+    }
+    .about-container .h4-ol-div p{
+        background-image: url(images/abstract-textured-backdrop-background.jpg);
+        background-size: cover;
+        background-repeat: repeat;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: rgba(0, 0, 0, 0.27);
+         font-weight: 600;
+        -webkit-font-smoothing: antialiased;
+    }
+    .about-container .ol-div {
+        width: 100%;
+        font-weight: 400;
+        opacity: 96%;
+        font-family: 'Oswald', sans-serif;
+        letter-spacing: 2px;
+        word-spacing: 6px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: self-start;
+        padding: 40px 60px;
+    }
+
+    .about-container .h4-team-div p{
+        background-image: url(images/abstract-textured-backdrop-background.jpg);
+        background-size: cover;
+        background-repeat: repeat;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: rgba(0, 0, 0, 0.27);
+         font-weight: 600;
+        -webkit-font-smoothing: antialiased;
+    }
+    .about-container .team-div {
+        width: 100%;
+        font-weight: 400;
+        opacity: 96%;
+        font-family: 'Oswald', sans-serif;
+        letter-spacing: 2px;
+        word-spacing: 6px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 60px;
+    }
+</style>

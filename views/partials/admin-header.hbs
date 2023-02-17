@@ -1,0 +1,86 @@
+<header>
+<div class="container-fluid home-section  ">
+  <nav class="navbar navbar-expand-md ">
+
+    <a class="navbar-brand" href="#"><img src="/images/logo/Logo.png" class="mainLogo"  alt=""></a>
+
+    <div class="d-flex justify-content-end form-style-4-div" style="width: 80%;  padding-right: 50px;">
+      {{#if admin}}
+      <a style="overflow: hidden;" href="/sign-out"><button style="overflow: hidden;" class="button-55" role="button">Sign out</button></a>
+      {{/if}}
+    </div>
+
+<section>
+  <div class="sidebar">
+    <div class="logo-details">
+      <!--
+      <img src="images/logo/Logo.png" class="icon"  alt=" ... ">-->
+      
+      <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="/admin">
+          <i class="bi bi-grid"></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+        <a href="/admin/view-options">
+          <i class="bi bi-view-list"></i>
+          <span class="links_name">products</span>
+        </a>
+        <span class="tooltip">products</span>
+      </li>
+      <li>
+        <a href="/admin/view-orders-admin">
+          <i class="bi bi-shop-window"></i>
+          <span class="links_name">Show Orders</span>
+        </a>
+        <span class="tooltip">Show Orders</span>
+      </li>
+      <li>
+        <a href="/admin/add-product">
+          <i class="bi bi-patch-plus"></i>
+          <span class="links_name">Add Product</span>
+        </a>
+        <span class="tooltip">Add Product</span>
+      </li>
+      <li>
+        <a href="/admin/add-special-products">
+          <i class="bi bi-basket3"></i>
+          <span class="links_name">Special Offer</span>
+        </a>
+        <span class="tooltip">Special Offer</span>
+      </li>
+      <li>
+        <a href="/admin/add-banner">
+          <i class="bi bi-aspect-ratio"></i>
+          <span class="links_name">Add Banner</span>
+        </a>
+        <span class="tooltip">Add Banner</span>
+      </li>
+      <li>
+        <a href="/admin/admin-messages">
+          <i class="bi bi-envelope"></i>
+          <span class="links_name">Messages</span>
+        </a>
+        <span class="tooltip">Messages</span>
+      </li>
+      
+      
+      <li class="profile">
+        <div class="profile-details">
+          <!--<img src="profile.jpg" alt="profileImg">-->
+          <div class="name_job">
+            <div class="name">Prem Shahi</div>
+            <div class="job">Web designer</div>
+          </div>
+        </div>
+        <i class='bx bx-log-out' id="log_out"></i>
+      </li>
+    </ul>
+  </div>
+</section>
+</header>

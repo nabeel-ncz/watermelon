@@ -1,0 +1,62 @@
+
+
+
+<section>
+    <div class="container-fluid cart-container" style="padding-left: 84px; width: 100%; overflow: hidden;">
+
+        <div class="wrapper">
+            <h1>My Cart</h1>
+            <div class="project">
+
+                
+
+                <div class="shop">
+{{#each products}}
+                    <div class="box">
+                        <div class="content-img">
+                            <img src="/images/product-images/{{this.product._id}}.{{this.product.imageExt}}">
+                        </div>
+
+                        <div class="content">
+                            <h3 style="overflow: hidden;">{{this.product.Name}}</h3>
+                            <p><span style="font-weight: bold;">Description : </span>{{this.product.Description}} <br><span style="font-size: 18px;">&#9733; &#9733; &#9733; &#9734;
+                                    &#9734;</span><br><span style="">Free Shipping available for this product</span>
+                                    <br><span style="color: rgb(19, 124, 19);">In
+                                    stock</span></p>
+                            
+                            <p><span style="font-weight: bold;">Price : </span><span style="font-size: 22px;"> ₹.{{this.product.Price}}</span></p>
+                            <div class="quantity-div">
+                                <span>Quantity : </span><div class="cart-item-count-div">
+                                <button onclick="changeQuantity('{{this._id}}','{{this.product._id}}',-1,'{{../user._id}}')"><i class="bi bi-dash-circle"></i></button>
+                                <span id="{{this.product._id}}" class="cart-each-item-count">{{this.quantity}}</span>
+                                <button onclick="changeQuantity('{{this._id}}','{{this.product._id}}',1,'{{../user._id}}')"><i class="bi bi-plus-circle"></i></button>
+                                
+                            </div>
+                            </div>
+                            
+                            <button onclick="removeCartProduct('{{this._id}}','{{this.product._id}}')" class="btn-area"><i class="bi bi-trash"></i> <span
+                                    class="btn2">Remove</span></button>
+                        </div>
+                    </div>
+{{/each}}
+
+                </div>
+                
+                
+
+                <div class="right-bar">
+                    <p><span>Subtotal</span> <span> ₹.<span id="subtotal-amount-of-cart-product">{{total}}</span></p></span>
+                    
+                    <p><span>Tax (5%)</span> <span>₹.100</span></p>
+                    
+                    <p><span>Shipping</span> <span>₹.15</span></p>
+                    
+                    <p><span>Total</span> <span>₹.141</span></p><a href="/checkout"><i
+                            class="fa fa-shopping-cart"></i>Checkout</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>

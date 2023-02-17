@@ -1,0 +1,247 @@
+<section>
+    <div class="container" style="padding-left: 90px;">
+        <div class="row  d-flex justify-content-cnter align-items-center">
+            <div class="col-12 col-md-12">
+                <div id="carouselExampleDark" class="carousel slide fade-in-image" data-bs-ride="carousel"
+                    style="animation: ;">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="4000">
+                            <img src="images/banner/super hamburger.png" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5></h5>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="4000">
+                            <img src="images/banner/super Juice.png" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5></h5>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="4000">
+                            <img src="images/banner/coffee.png" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5></h5>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" style="color: white;" type="button"
+                        data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid" style="padding-left: 90px; padding-top: 40px; padding-bottom: 10px;">
+        <p class="responsive-font" style="margin-left: 20px;">
+            Special Offers
+        </p>
+      <div id="special-offers-container-slider" class="pt-1">
+		<div class="container">
+			
+			<div class="slider">
+				<div class="owl-carousel" style="overflow: hidden;">
+
+                    {{#each specialProducts}}
+					<div class="slider-card">
+						<div class="d-flex justify-content-center align-items-center mb-4">
+							<img src="/images/special-product-images/{{this._id}}.{{imageExt}}" alt="">
+						</div>
+                        <div class="d-flex justify-content-center align-items-center flex-column">
+                        <h4 class="mb-1  text-center overflow-hidden"><b>{{this.offer}} off</b></h4>
+						<h6 class="mb-1 text-center overflow-hidden"><b>{{this.name}}</b></h6>
+                        <h6 class="mb-0 text-center overflow-hidden">Price : <span class="me-2"><s> ₹.{{this.rightPrice}}</s></span> ₹.{{this.currentPrice}}</h6>
+						<p class="text-center mx-4 my-3">{{this.description}}</p>
+                            <button class="btn text-center mb-2">Check it</button></div>
+					</div>
+
+                    {{/each}}
+                    
+				</div>
+			</div>
+		</div>
+	
+      </div>
+
+    </div>
+    
+</section>
+<script>
+		// Owlcarousel
+		$(document).ready(function () {
+			$(".owl-carousel").owlCarousel({
+				loop: true,
+				margin: 10,
+				nav: true,
+				autoplay: true,
+				autoplayTimeout: 4000,
+				autoplayHoverPause: true,
+				center: true,
+				navText: [
+					"<i class='fa fa-angle-left'></i>",
+					"<i class='fa fa-angle-right'></i>"
+				],
+				responsive: {
+					0: {
+						items: 1
+					},
+					600: {
+						items: 1
+					},
+					1000: {
+						items: 3
+					}
+				}
+			});
+		});
+	</script>
+
+<section>
+    <p class="responsive-font" style="margin-left: 110px;">
+        Our hot dishes
+    </p>
+    <div class="container dishes-category-container"
+        style="padding-left: 90px; padding-top: 40px; padding-bottom: 30px; display: flex; justify-content: center;">
+        <div class="row g-2 justify-content-center">
+
+            <div class="col-3 col-sm-3 col-md-2">
+
+                <button class="dishes-category-btn"><i class="fa-solid fa-burger"></i>
+                    click
+                </button>
+
+            </div>
+
+
+            <div class="col-3 col-sm-3 col-md-2">
+
+                <button class="dishes-category-btn"><i class="fa-solid fa-bowl-rice"></i>
+                    click
+                </button>
+
+            </div>
+            <div class="col-3 col-sm-3 col-md-2">
+
+                <button class="dishes-category-btn"><i class="fa-solid fa-mug-saucer"></i>
+                    click
+                </button>
+
+            </div>
+            <div class="col-3 col-sm-3 col-md-2">
+
+                <button class="dishes-category-btn"><i class="fa-solid fa-drumstick-bite"></i>
+                    click
+                </button>
+
+            </div>
+            <div class="col-3 col-sm-3 col-md-2">
+
+                <button class="dishes-category-btn"><i class="fa-solid fa-glass-water"></i>
+                    click
+                </button>
+
+            </div>
+            <div class="col-3 col-sm-3 col-md-2">
+
+                <button class="dishes-category-btn"><i class="fa-solid fa-cake-candles"></i>
+                    click
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid all-dishes-cards mt-5" style="padding-left: 82px;">
+        <div class="row" style="display: flex; align-items: center; justify-content: center;">
+            {{#each products}}
+            
+            <div class="col-12 col-md-4 mb-4"
+                style="display: flex;flex-direction: column; align-items: center; justify-content: center;">
+                <div class="card-main">
+
+                    <div class="card-front">
+                        <img src="/images/product-images/{{this._id}}.{{imageExt}}" alt="">
+                        <span style="font-size: 22px;">&#9733; &#9733; &#9733; &#9734; &#9734;</span>
+                        <h5 class="user-home-prod-name" style="overflow: hidden; text-align: center;">{{this.Name}}</h5>
+                        <h5>₹.{{this.Price}}</h5>
+                    </div>
+
+                </div>
+                
+                <div class="card-buttons">
+                    <button
+                            onclick="popupDetails('{{this._id}}')" class="card-button" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"><i class="bi bi-info-square-fill"></i></button>
+
+                    <button class="card-button" onclick="addToCart('{{this._id}}')">Add <i class="fa-solid fa-heart-circle-plus"
+                            style="margin-left: 4px;"></i></button>
+                    <button class="card-button">Order <i class="fa-solid fa-cart-plus"
+                            style="margin-left: 4px;"></i></button>
+                </div>
+            </div>
+            
+            {{/each}}
+
+        </div>
+    </div>
+</section>
+<!--=======================-->
+<section>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background-image: radial-gradient( rgba(255, 235, 241, 0.884),rgb(255, 255, 255) ), url(images/modal-bg.jpg);">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5"><span id="modalTitleMain">Modal title</span><p id="modalTitleSub" style="font-size: 12px;">free delivery available now !</p></h1>
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-l">
+                    <img id="modal-image" src="" alt="" style="width: 160px; height: auto;">
+                    
+                    <div class="modal-ratings" style="margin-bottom: 16px;">
+                        <span style="font-size: 18px;">&#9733; &#9733; &#9733; &#9734; &#9734;</span>
+                    </div>
+
+                    <div class="modal-buttons">
+                    <button class="modal-button">Add <i class="fa-solid fa-heart-circle-plus"></i></button>
+                    <button class="modal-button">Order <i class="fa-solid fa-cart-plus"></i></button></div>
+                </div>
+                <div class="modal-body-r">
+                    <h5>Name : <span id="popup-product-name"></span></h5>
+                    <h5>Price : ₹.<span id="popup-product-price"></span></h5>
+                    <h5>Description : <span id="popup-product-desc"></span></h5>
+                    
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </section>
+    <!--=======================-->

@@ -1,0 +1,83 @@
+<section>
+    <div class="container-fluid" style="padding-left: 90px;">
+        <div class="row d-flex justify-content-center" style="padding: 10px 0px 10px 10px;">
+            <div class="col-12 col-md-6">
+                <form action="/admin/edit-product?id={{product._id}}" method="post" enctype="multipart/form-data">
+
+                    <label for="" class="mt-2">Name</label>
+                    <input class="form-control mt-2" type="text" aria-label="default input example" name="Name" value="{{product.Name}}">
+
+                    <label for="" class="mt-2">Price</label>
+                    <input class="form-control mt-2" type="text" aria-label="default input example" name="Price" value="{{product.Price}}">
+
+                    <label for="" class="mt-2">Description</label>
+                    <input class="form-control mt-2 mb-3" type="text" aria-label="default input example" value="{{product.Description}}"
+                        name="Description">
+
+                    <div class="mb-3 mt-2">
+                        <label for="formFile" class="form-label">Select image </label>
+                        <img src="/images/product-images/{{product._id}}.{{ext}}" alt=""
+                            style="width: 40px; height: auto; margin-left: 20px;" id="imageView">
+                        <input class="form-control mt-3" type="file" id="formFile" name="Image" value="/images/product-images/{{product._id}}.{{ext}}"
+                            onchange="viewImage(event)">
+                    </div>
+
+                    <label for="" class="mt-2">Choose image extension</label>
+                    <div class="form-check form-switch mt-2">
+                        <input class="form-check-input mt-2" type="radio" role="switch" name="imageExt" value="jpg">
+                        <label class="form-check-label mt-2" for="flexSwitchCheckDefault">JPG</label>
+                    </div>
+                    <div class="form-check form-switch mt-2 mb-3">
+                        <input class="form-check-input" type="radio" role="switch" name="imageExt" value="png">
+                        <label class="form-check-label" for="flexSwitchCheckChecked">PNG</label>
+                    </div>
+
+                    <label for="" class="mt-2">Category</label>
+                    <br>
+
+                    <input type="radio" class="btn-check" name="Category" id="option1" autocomplete="off"
+                        value="Burger">
+                    <label class="btn btn-outline-dark me-3 mt-3" for="option1"
+                        style="font-size: smaller;">Burger</label>
+
+                    <input type="radio" class="btn-check" name="Category" id="option2" autocomplete="off"
+                        value="Shawarma">
+                    <label class="btn btn-outline-dark me-3 mt-2" for="option2"
+                        style="font-size: smaller;">Shawarma</label>
+
+                    <input type="radio" class="btn-check" name="Category" id="option3" autocomplete="off"
+                        value="Snacks">
+                    <label class="btn btn-outline-dark me-3 mt-2" for="option3"
+                        style="font-size: smaller;">Snacks</label>
+
+                    <input type="radio" class="btn-check" name="Category" id="option4" autocomplete="off"
+                        value="Chicken">
+                    <label class="btn btn-outline-dark me-3 mt-2" for="option4"
+                        style="font-size: smaller;">Chicken</label>
+
+                    <input type="radio" class="btn-check" name="Category" id="option5" autocomplete="off" value="Rice">
+                    <label class="btn btn-outline-dark me-3 mt-2" for="option5" style="font-size: smaller;">Rice</label>
+
+                    <input type="radio" class="btn-check" name="Category" id="option6" autocomplete="off" value="Cakes">
+                    <label class="btn btn-outline-dark me-3 mt-2" for="option6"
+                        style="font-size: smaller;">Cakes</label>
+
+                    <input type="radio" class="btn-check " name="Category" id="option7" autocomplete="off"
+                        value="Coffee">
+                    <label class="btn btn-outline-dark me-3 mt-2" for="option7"
+                        style="font-size: smaller;">Coffee</label>
+
+                    <input type="radio" class="btn-check " name="Category" id="option8" autocomplete="off"
+                        value="Juices">
+                    <label class="btn btn-outline-dark me-3 mt-2" for="option8"
+                        style="font-size: smaller;">Juices</label>
+                    <br><br>
+
+                    <div style="width: 100%; display: flex; justify-content: center;">
+                        <button type="submit" class="btn btn-warning ">EDIT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

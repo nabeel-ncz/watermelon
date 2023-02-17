@@ -1,0 +1,299 @@
+<section>
+    <div class="container-fluid"  style="padding-left: 90px;">
+
+        
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+
+                
+
+                <div class="card-body">
+                  <h5 class="card-title">Sales <span>| Today</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cart"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{TotalOrdersCount}}</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
+
+            <!-- Revenue Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+
+                
+
+                <div class="card-body">
+                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{#each totalRevenue as |0|}}
+                        {{this.TotalAmount}}
+                        {{/each}}
+                      </h6>
+                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Revenue Card -->
+
+            <!-- Customers Card -->
+            <div class="col-xxl-4 col-xl-12">
+
+              <div class="card info-card customers-card">
+
+                
+
+                <div class="card-body">
+                  <h5 class="card-title">Customers <span>| This Year</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{totalCutomers}}</h6>
+                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div><!-- End Customers Card -->
+
+            <!-- Reports -->
+            <div class="col-12">
+              <div class="card" style="margin-bottom: 20px;">
+                <div class="card-body">
+                  <h5 class="card-title">Reports <span>/Today</span></h5>
+                  <!-- Line Chart -->
+                  <div id="reportsChart">
+                    <canvas id="reportsChartCanvas" style="width:100%;max-width:700px"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Reports -->
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                
+
+                <div class="card-body">
+                  <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+
+                  <table class="table table-borderless datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col"> </th>
+                        <th scope="col">Customer</th>
+                        <th scope="col">Products</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#each orders}}
+                      <tr>
+                        <td scope="row"><i class='bi bi-circle-fill activity-badge text-success align-self-start'></i></td>
+                        <td>{{this.deliveryDetails.name}} <br>{{this.deliveryDetails.email}}</td>
+                        <td>
+                          {{#each this.products.product}}
+                          <a href="#" class="text-primary">{{this.name}},</a>
+                          {{/each}}
+                        </td>
+                        <td>₹.{{this.totalPrice}}</td>
+                        <td><span class="badge bg-success">{{this.status}}</span></td>
+                      </tr>
+                      {{/each}}
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+          </div>
+        </div><!-- End Left side columns -->
+
+
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+          <!-- Recent Activity -->
+          <div class="card" style="margin-bottom: 20px;">
+            <div class="card-body">
+              <h5 class="card-title">Top Sellings <span>| Today</span></h5>
+              <div class="activity">
+
+                <div class="activity-item d-flex">
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                  <div class="activity-content">
+                    <a href="#" class="fw-bold text-dark">Burger</a> <span>Sold: 126 <span class="fw-bold">|</span> Revenue: ₹.1599 </span>
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                  <div class="activity-content">
+                    <a href="#" class="fw-bold text-dark">Burger</a> <span>Sold: 126 <span class="fw-bold">|</span> Revenue: ₹.1599 </span>
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                  <div class="activity-content">
+                    <a href="#" class="fw-bold text-dark">Burger</a> <span>Sold: 126 <span class="fw-bold">|</span> Revenue: ₹.1599 </span>
+                  </div>
+                </div><!-- End activity item-->
+
+              </div>
+
+            </div>
+          </div><!-- End Recent Activity -->
+
+          <!-- Budget Report -->
+          <div class="card" id="budgetChartCard" style="margin-bottom: 20px;">
+            <div class="card-body pb-0">
+              <h5 class="card-title">Budget Report <span>| This Month</span></h5>
+
+              <div class="echart">
+                <canvas id="budgetChart" style="width:100%;max-width:600px"></canvas>
+              </div>
+            </div>
+          </div>
+          <!-- End Budget Report -->
+
+           <!-- food category Report -->
+          <div class="card">
+            <div class="card-body pb-0">
+              <h5 class="card-title">Top Category <span>| This Month</span></span></h5>
+
+          <div class="echart">
+                <canvas id="foodCategoryChart" style="width:100%;max-width:600px"></canvas>
+          </div>
+            </div>
+          </div>
+          <!--food category Report -->
+              
+          
+        </div><!-- End Right side columns -->
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+    </div>
+</section>
+
+
+<script>
+//budget===============
+var xValues = ["Jan", "Feb", "Mar", "Apr", "May"];
+var yValues = [5000, 10000, 15000, 20000, 25000];
+var barColors = ["#d90429", "#e32339", "#ed3549", "#f64558", "#ff5468"];
+
+new Chart("budgetChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "latest budget report 2021-22"
+    }
+  }
+});
+//reports ===========
+var xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+new Chart("reportsChartCanvas", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{ 
+      data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+      borderColor: "red",
+      fill: false
+    }, { 
+      data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+      borderColor: "green",
+      fill: false
+    }, { 
+      data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
+      borderColor: "blue",
+      fill: false
+    }]
+  },
+  options: {
+    legend: {display: false}
+  }
+});
+// food category=======
+var xValues = ["Burger", "Cakes", "Rices", "Juice", "Coffee","Chicken"];
+var yValues = [49, 45, 44, 24, 15,10];
+var barColors = [
+  "#2F4858",
+  "#006477",
+  "#008186",
+  "#009D81",
+  "#1EB769",
+  "#80CC42"
+];
+
+new Chart("foodCategoryChart", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Top Food Category Report This Month"
+    }
+  }
+});
+</script>

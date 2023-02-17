@@ -1,0 +1,127 @@
+<section id="forPcSignUp">
+    <div class="container-fluid log-bg-div">
+        <style>
+            .log-bg-div {
+                background-image: radial-gradient( rgba(255, 235, 241, 0.884),rgb(255, 255, 255) ), url("images/login-banner.jpg");
+                background-repeat: no-repeat;
+                padding-left: 90px;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                font-family: 'Montserrat', sans-serif;
+                height: 100vh;
+                margin: -20px 0 50px;
+            }
+        </style>
+
+        <div class="about-log-container" id="about-log-container">
+
+            <!--<div class="about-form-container sign-up-container">
+                <form >
+                    <h1>Sign in</h1>
+                    <div class="about-social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your account</span>
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Password" />
+                    <a href="#">Forgot your password?</a>
+                    <button class="log-button">Sign In</button>
+                </form>
+            </div>-->
+            <div class="about-form-container sign-in-container">
+                <form action="/sign-up" method="post" enctype="multipart/form-data">
+                    <h1>Create Account</h1>
+                    <div class="about-social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    {{#if SignUpErr}}
+                    <span style="color: rgb(246, 30, 30);">{{SignUpErr}}</span>
+                    {{else}}
+                    <span>or use your email for registration</span>
+                    {{/if}}
+                    <input type="text" placeholder="Name" name="Name"/>
+                    <input type="email" placeholder="Email" name="Email"/>
+                    <input type="password" placeholder="Password --must 8 letters" name="Password"/>
+                    <button type="submit" class="log-button">Sign Up</button>
+                </form>
+            </div>
+
+
+            <div class="overlay-container">
+                <div class="about-overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <a href="/log-in"><button class="ghost" id="signIn">Sign In</button></a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!--<script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('about-log-container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+</script>-->
+
+<section>
+    <div class="container-fluid" id="forMobileSignUp">
+        <div class="row" style="background: #fff;
+    padding-left: 74px;
+	display: flex;
+	justify-content: center;
+    flex-direction: column;
+	align-items: center;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+    padding-bottom: 220px;">
+            <div class="col-12">
+                <div class="mobile-log-container">
+                    <div class="mobile-form-container sign-up-container">
+                        <form action="/sign-up" method="post" enctype="multipart/form-data">
+                            <h1 style="overflow: hidden;">Create Account</h1>
+                            <div class="about-social-container">
+                                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                    {{#if SignUpErr}}
+                    <span style="color: rgb(246, 30, 30);">{{SignUpErr}}</span>
+                    {{else}}
+                    <span>or use your email for registration</span>
+                    {{/if}}
+                            <input type="text" placeholder="Name" name="Name"/>
+                            <input type="email" placeholder="Email" name="Email" />
+                            <input type="password" placeholder="Password --8--" name="Password" />
+                            <a href="/log-in" class="new-ac-mobile">Already have an Account</a>
+                            <button type="submit" class="log-button">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
