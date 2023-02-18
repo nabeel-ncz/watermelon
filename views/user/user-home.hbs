@@ -106,9 +106,9 @@
 						items: 1
 					},
 					600: {
-						items: 1
+						items: 2
 					},
-					1000: {
+					900: {
 						items: 3
 					}
 				}
@@ -121,72 +121,37 @@
         Our hot dishes
     </p>
     <div class="container dishes-category-container"
-        style="padding-left: 90px; padding-top: 40px; padding-bottom: 30px; display: flex; justify-content: center;">
-        <div class="row g-2 justify-content-center">
-
-            <div class="col-3 col-sm-3 col-md-2">
-
-                <button class="dishes-category-btn"><i class="fa-solid fa-burger"></i>
-                    click
-                </button>
-
+        style="padding-left: 90px; padding-top: 5px; padding-bottom: 5px; display: flex; justify-content: center;">
+        
+            {{#each productsCategory}}
+            <div onclick="productCategoryClick('{{this.category}}','{{this._id}}')" class=" product-category-div-{{this._id}} product-category-div-style">
+                <i class="{{this.iconClass}} mb-1"></i>
+                <span class="product-category-div-span">{{this.category}}</span> 
             </div>
+        {{/each}}
+        
+            
+        
+        
 
-
-            <div class="col-3 col-sm-3 col-md-2">
-
-                <button class="dishes-category-btn"><i class="fa-solid fa-bowl-rice"></i>
-                    click
-                </button>
-
-            </div>
-            <div class="col-3 col-sm-3 col-md-2">
-
-                <button class="dishes-category-btn"><i class="fa-solid fa-mug-saucer"></i>
-                    click
-                </button>
-
-            </div>
-            <div class="col-3 col-sm-3 col-md-2">
-
-                <button class="dishes-category-btn"><i class="fa-solid fa-drumstick-bite"></i>
-                    click
-                </button>
-
-            </div>
-            <div class="col-3 col-sm-3 col-md-2">
-
-                <button class="dishes-category-btn"><i class="fa-solid fa-glass-water"></i>
-                    click
-                </button>
-
-            </div>
-            <div class="col-3 col-sm-3 col-md-2">
-
-                <button class="dishes-category-btn"><i class="fa-solid fa-cake-candles"></i>
-                    click
-                </button>
-
-            </div>
-
-        </div>
-
+            
 
     </div>
 </section>
 
 <section>
-    <div class="container-fluid all-dishes-cards mt-5" style="padding-left: 82px;">
+    <div class="container-fluid all-dishes-cards mt-1" style="padding-left: 82px;">
         <div class="row" style="display: flex; align-items: center; justify-content: center;">
             {{#each products}}
+
             
-            <div class="col-12 col-md-4 mb-4"
+            <div class="col-6 col-md-4 mb-4 prodCardAll" id="prodCard{{this._id}}"
                 style="display: flex;flex-direction: column; align-items: center; justify-content: center;">
                 <div class="card-main">
 
                     <div class="card-front">
                         <img src="/images/product-images/{{this._id}}.{{imageExt}}" alt="">
-                        <span style="font-size: 22px;">&#9733; &#9733; &#9733; &#9734; &#9734;</span>
+                        <span class="card-rating">&#9733; &#9733; &#9733; &#9734; &#9734;</span>
                         <h5 class="user-home-prod-name" style="overflow: hidden; text-align: center;">{{this.Name}}</h5>
                         <h5>₹.{{this.Price}}</h5>
                     </div>

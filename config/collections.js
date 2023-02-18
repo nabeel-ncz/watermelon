@@ -1,5 +1,6 @@
 module.exports={
     PRODUCT_COLLECTION:'products',
+    FOODCATEGORY_COLLECTION:'foodCategories',
     SPECIAL_PRODUCTS_COLLECTION:'specialProducts',
     USER_COLLECTIONS:'accounts',
     CART_COLLECTION:'cart',

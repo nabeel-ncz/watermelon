@@ -33,9 +33,10 @@ router.get('/view-orders-admin',async(req,res)=>{
   let orders=await userHelpers.getAllOrdersForAdmin()
   res.render('admin/view-orders-admin',{admin,orders})
 })
-router.get('/add-product',(req,res)=>{
+router.get('/add-product',async (req,res)=>{
   admin=req.session.admin
-  res.render('admin/add-product',{admin})
+  let categories=await productHelpers.findAllCategories()
+  res.render('admin/add-product',{admin,categories})
 })
 router.post('/add-product',(req,res)=>{
   admin=req.session.admin
@@ -49,18 +50,27 @@ router.post('/add-product',(req,res)=>{
       if(err){
         console.log(err)
       }else{
-        res.render('admin/add-product',{admin})
+        res.redirect('/admin/add-product')
         //console.log(req.body.imageExt);
       }
     })
+  })
+})
+router.get('/add-new-category',(req,res)=>{
+  res.render('admin/add-category',{admin:req.session.admin})
+})
+router.post('/add-new-category',(req,res)=>{
+  productHelpers.addNewCategory(req.body).then(()=>{
+    res.redirect('/admin/add-product')
   })
 })
 router.get('/edit-product',async (req,res)=>{
   admin=req.session.admin
   let productId=req.query.id
   let product=await productHelpers.getProductDetails(productId)
+  let categories=await productHelpers.findAllCategories()
   //console.log(product)
-  res.render('admin/edit-product',{product,admin})
+  res.render('admin/edit-product',{product,admin,categories})
    
 })
 router.post('/edit-product',(req,res)=>{

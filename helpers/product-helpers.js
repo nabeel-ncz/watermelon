@@ -110,5 +110,24 @@ module.exports={
             let specialProducts=await db.get().collection(collections.SPECIAL_PRODUCTS_COLLECTION).find({}).toArray()
             resolve(specialProducts)
         })
+    },
+    addNewCategory:(data)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collections.FOODCATEGORY_COLLECTION).insertOne(data).then(()=>{
+                resolve()
+            })
+        })
+    },findAllCategories:()=>{
+        return new Promise(async (resolve,reject)=>{
+            let data= await db.get().collection(collections.FOODCATEGORY_COLLECTION).find({}).toArray()
+            resolve(data)
+        })
+    },getCorrospondCategoryItems:(category)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collections.PRODUCT_COLLECTION).find({Category:category}).toArray().then((response)=>{
+                //console.log(response);
+                resolve(response)
+            })
+        })
     }
 }

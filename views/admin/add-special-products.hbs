@@ -1,40 +1,55 @@
 <section>
     <div class="container-fluid" style="padding-left: 90px;">
         <div class="row d-flex justify-content-center" style="padding: 10px 0px 10px 10px;">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
                 <form action="/admin/add-special-products" method="post" enctype="multipart/form-data">
 
-                    <label for="" class="mt-2">Name</label>
+                <div style="display: flex; align-items: baseline;">
+                    <label for="" class="mt-2">Name</label><span class="text-success"
+                            style="font-size: 12px;">(write full name of products)</span>
+                </div>
                     <input class="form-control mt-2" type="text" aria-label="default input example" name="name"
                         required>
 
-                    <label for="" class="mt-2">Right price</label>
+                <div style="display: flex; align-items: baseline;">
+                    <label for="" class="mt-2">Right price</label><span class="text-success"
+                            style="font-size: 12px;">(normal price of product)</span>
+                </div>
                     <input class="form-control mt-2" type="text" aria-label="default input example" name="rightPrice"
                         required>
 
-                    <label for="" class="mt-2">Current price</label>
+                <div style="display: flex; align-items: baseline;">
+                    <label for="" class="mt-2">Current price</label><span class="text-success"
+                            style="font-size: 12px;">(offered price of product)</span>
+                </div>
                     <input class="form-control mt-2" type="text" aria-label="default input example" name="currentPrice"
                         required>
 
-                    <label for="" class="mt-2">Offer</label>
+                <div style="display: flex; align-items: baseline;">
+                    <label for="" class="mt-2">Offer</label><span class="text-success"
+                            style="font-size: 12px;">(offer in percentage)</span>
+                </div>
                     <input class="form-control mt-2" type="text" aria-label="default input example" name="offer"
                         required>
 
-                    <label for="" class="mt-2">Description</label>
+                <div style="display: flex; align-items: baseline;">
+                    <label for="" class="mt-2">Description</label><span class="text-success"
+                            style="font-size: 12px;">(full description of product including offer details)</span>
+                </div>
                     <input class="form-control mt-2 mb-3" type="text" aria-label="default input example"
                         name="description" required>
 
-                    <p style="font-weight: 300;">Image size <span style="font-weight: 500;"> 1280 : 720 </span>for best
+                    <p style="font-weight: 300;" class="text-success">Image size <span style="font-weight: 500;"> 1280 : 720 </span>for best
                         result</p>
                     <div class="mb-3 mt-2">
                         <label for="formFile" class="form-label">Select image </label>
-                        <img src="/images/product-images/{{products._id}}.{{ext}}" alt=""
+                        <img src="" alt=""
                             style="width: 80px; height: auto; margin-left: 20px;" id="imageView">
                         <input class="form-control mt-3" type="file" id="formFile" name="Image"
                             onchange="viewImage(event)">
                     </div>
 
-                    <p style="font-weight: 300;">Choose a full screen image without transperensy for best result</p>
+                    <p style="font-weight: 300;" class="text-success">Choose a full screen image without transperensy for best result</p>
 
                     <label for="" class="mt-2">Choose image extension</label>
 
@@ -52,7 +67,8 @@
                     </div>
 
                     <div style="width: 100%; display: flex; justify-content: center;">
-                        <button type="submit" class="btn btn-primary ">ADD</button>
+                        <a href="/admin/" style="font-size: 14px;" class="btn btn-dark me-2">Cancel</a>
+                        <button type="submit" style="font-size: 14px;" class="btn btn-warning">Add</button>
                     </div>
                 </form>
             </div>

@@ -27,14 +27,19 @@ router.get('/',async function(req, res, next) {
     messageCount=await userHelpers.findUserMessageCount(req.session.user._id)
   }
   let specialProducts=await productHelpers.getAllSpecialProducts()
+  let productsCategory=await productHelpers.findAllCategories()
   productHelpers.getAllProducts().then((products)=>{
     //let productsCategory=Object.values(products)
     //console.log(productsCategory)
-    res.render('user/user-home',{user,products,cartCount,orderCount,specialProducts,messageCount});
-    //console.log(user)
+    res.render('user/user-home',{user,products,cartCount,orderCount,specialProducts,messageCount,productsCategory});
   })
   
 });
+router.get('/get-category-products/',(req,res)=>{
+  productHelpers.getCorrospondCategoryItems(req.query.categ).then((response)=>{
+    res.json(response)
+  })
+})
 /*
 router.post('/products',async(req,res)=>{
   let payload=req.body.payload.trim()
@@ -116,14 +121,15 @@ router.get('/cart',verifyLogin,async (req,res)=>{
   if(req.session.user){
     cartCount= await userHelpers.getCartBadgeCount(req.session.user._id)
     orderCount=await userHelpers.getOrderBadgeCount(req.session.user._id)
+    messageCount=await userHelpers.findUserMessageCount(req.session.user._id)
   }
   
   //console.log(total)
   if(cartCount==0){
-    res.render('user/empty-cart',{user:req.session.user,cartCount,orderCount})
+    res.render('user/empty-cart',{user:req.session.user,cartCount,orderCount,messageCount})
   }else{
     let total= await userHelpers.getTotalAmount(req.session.user._id)
-    res.render('user/cart',{products,user:req.session.user,cartCount,total,orderCount})
+    res.render('user/cart',{products,user:req.session.user,cartCount,total,orderCount,messageCount})
   }
   
 })
@@ -175,8 +181,9 @@ router.get('/view-orders',verifyLogin,async(req,res)=>{
   let orderDetails=await userHelpers.getUserOrders(req.session.user._id)
   cartCount= await userHelpers.getCartBadgeCount(req.session.user._id)
   orderCount=await userHelpers.getOrderBadgeCount(req.session.user._id)
+  messageCount=await userHelpers.findUserMessageCount(req.session.user._id)
   
-  res.render('user/view-orders',{user:req.session.user,orderDetails,cartCount,orderCount})
+  res.render('user/view-orders',{user:req.session.user,orderDetails,cartCount,orderCount,messageCount})
 })
 router.post('/show-order-product-details', (req,res)=>{
   userHelpers.getOrderedProductForPopup(req.body.productId).then((response)=>{
@@ -184,8 +191,13 @@ router.post('/show-order-product-details', (req,res)=>{
     res.json(response)
   })
 })
-router.get('/ask-questions',verifyLogin,(req,res)=>{
-  res.render('user/ask-questions',{user:req.session.user})
+router.get('/ask-questions',verifyLogin,async (req,res)=>{
+  if(req.session.user){
+    cartCount= await userHelpers.getCartBadgeCount(req.session.user._id)
+    orderCount=await userHelpers.getOrderBadgeCount(req.session.user._id)
+    messageCount=await userHelpers.findUserMessageCount(req.session.user._id)
+  }
+  res.render('user/ask-questions',{user:req.session.user,cartCount,orderCount,messageCount})
 })
 router.post('/ask-question',(req,res)=>{
   userHelpers.sendMessage(req.body).then(()=>{
@@ -207,6 +219,15 @@ router.get('/remove-from-user-messages/',(req,res)=>{
 })
 router.get('/about',async (req,res)=>{
   let faqs=await userHelpers.findAllFaqs()
-  res.render('user/about',{user:req.session.user,faqs})
+
+  if(req.session.user){
+  cartCount= await userHelpers.getCartBadgeCount(req.session.user._id)
+  orderCount=await userHelpers.getOrderBadgeCount(req.session.user._id)
+  messageCount=await userHelpers.findUserMessageCount(req.session.user._id)
+  res.render('user/about',{user:req.session.user,faqs,cartCount,orderCount,messageCount})
+  }else{
+    res.render('user/about',{user:req.session.user,faqs})
+  }
+  
 })
 module.exports = router;

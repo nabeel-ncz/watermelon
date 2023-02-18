@@ -32,17 +32,25 @@ const listItems = document.querySelectorAll('.header-search-prod-name');
 
 listItems.forEach((item) =>{
 let text = item.textContent;
+
 if(text.toLowerCase().includes (filter.toLowerCase())){ 
     item.style.display =''
 }else{
 item.style.display = 'none';
 
 }
-
 });
 }
 
-
+/*
+document.querySelector('.product-category-div-id').addEventListener('click',(id)=>{
+    var buttonSpan=document.querySelector('.product-category-div-span')
+    const categDiv=document.querySelectorAll('.product-category-div-id')
+    console.log(id);
+    categDiv.forEach((item)=>{
+        console.log(item.textContent);
+    })
+})*/
 //=========================================sidebar
 
 //============add product====
@@ -87,7 +95,6 @@ $( function () {
     $('#admin_page_prod_table').DataTable();
 } ); 
 
-
 //const date = new Date();
 
 let day = date.getDate();
@@ -103,7 +110,34 @@ $("#Desired-date").val(today)
 $("#current-date").val(todayForCurrent)
 
 
+/*
+function productCategoryClick(categId){
+    var buttonSpan=$('.product-category-div-span')
+    var categDiv=$('.product-category-div-'+categId)
+    //$('.prodCategIdBurger').css("display","none")
+    let text=''
+    $.each(categDiv,(key,item)=>{
+        text=item.textContent
+    })
+    console.log(text);
+    var className='.prodCategId'+text
+    $('.prodCategIdBurger').css("display","none")
+}
+*/
 //==========for order page===]
+function productCategoryClick(category,categId){
+    $.ajax({
+        url:'/get-category-products?categ='+category,
+        method:'get',
+        success:(response)=>{
+        $('.prodCardAll').css("display","none")
+
+           $.each(response,(key,value)=>{
+                $('#prodCard'+value._id).css("display","flex")
+           })
+        }
+    })
+}
 
 function popupDetails(productId) {
     
@@ -288,3 +322,17 @@ $('#checkout-form').submit((event)=>{
         }
     })
 })
+/*
+$('#add-category-form').submit((event)=>{
+    event.preventDefault()
+    $.ajax({
+        url:'/add-new-category',
+        method:'post',
+        data:$('#add-category-form').serialize(),
+        success:(response)=>{
+            if(response.status){
+                location.reload()
+            }
+        }
+    })
+})*/

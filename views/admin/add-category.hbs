@@ -1,0 +1,37 @@
+<section>
+    <div class="container-fluid"
+        style="padding-left: 90px; display: flex; align-items: center; justify-content: center; height: 70vh;">
+        <div class="add-category-box">
+            <form action="/admin/add-new-category" method="post" enctype="multipart/form-data">
+                <input class="form-control mb-3" type="text" placeholder="Enter category name" name="category">
+
+                <div>
+                <label for="formFile11" class="form-label text-success" style="font-size: 14px;">Better option is adding html class of icon , <br>
+                You can use font awesome library <a href="https://fontawesome.com/">fontawesome.com</a>  </label>
+                <input id="formFile11" class="form-control mb-3" type="text" placeholder="Enter html code of icon" name="iconClass">
+                </div>
+
+                <div>
+                <label for="formFile10" class="form-label" style="font-size: 14px; opacity: 80%;" >If you can't add html code ,You can<br>
+                 add a <span style="opacity: 90%; font-weight: 600;">18:18</span>  png image, <span class="text-danger"> it's not a better way</span> </label>
+                <input class="form-control" type="file" id="formFile10" name="iconimage">
+                </div>
+                
+                <button class="btn btn-warning mt-3" style="font-size: smaller;" type="submit">create</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    .add-category-box{
+        padding: 40px 30px;
+        border: 1px solid var(--secondary);
+    }
+    .add-category-box form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
