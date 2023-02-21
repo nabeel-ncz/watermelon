@@ -1,13 +1,16 @@
 <section>
     <div class="container-fluid" style="padding-left: 90px;">
-        
+
         <div class="view-orders-container">
-            <div class="view-orders-head"><h4>My orders</h4></div>
+            <div class="view-orders-head">
+                <h4>My orders</h4>
+            </div>
             {{#each orderDetails}}
             <article class="card">
-                <header class="card-header"> <span style="font-weight: 500;">Order placed on</span>  {{this.deliveryDetails.current_date}}</header>
+                <header class="card-header"> <span style="font-weight: 500;">Order placed on</span>
+                    {{this.deliveryDetails.current_date}}</header>
                 <div class="card-body">
-                    <h6 style="font-size: 14px;">Order ID: {{this.user}}</h6>
+                    <h6 style="font-size: 14px;">Order ID: {{this._id}}</h6>
                     <article class="card">
                         <div class="card-body row">
                             <div class="col-12 col-md-3 order-details-col-same">
@@ -56,34 +59,45 @@
 
                         </div>
                     </article>
-                    <div class="track">
-                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
-                                class="text">Order confirmed</span> </div>
-                        <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span
-                                class="text"> Picked by courier</span> </div>
-                        <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">
+                    <button onclick="showTracking('{{this._id}}')" class="btn btn-dark btn-order-tracking{{this._id}}"
+                        style="font-size: 12px; padding: 6px 8px; display: flex; align-items: center;">Track order<i
+                            class="ms-2 fa-solid fa-angle-down track-arrow{{this._id}}"></i></button>
+
+                            
+                    <div class="track user-order-tracking{{this._id}}" style="display: none;">
+
+                        <div class="step tracking-step-1{{this._id}}"> <span class="icon"> <i class="fa fa-check"></i>
+                            </span> <span class="text">Order confirmed</span> </div>
+
+                        <div class="step tracking-step-2{{this._id}}"> <span class="icon"> <i class="fa fa-user"></i>
+                            </span> <span class="text"> Picked by courier</span> </div>
+
+                        <div class="step tracking-step-3{{this._id}}"> <span class="icon"> <i class="fa fa-truck"></i>
+                            </span> <span class="text">
                                 On the way </span> </div>
-                        <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span
-                                class="text">Ready for pickup</span> </div>
+                        <div class="step tracking-step-4{{this._id}}"> <span class="icon"> <i class="fa fa-box"></i>
+                            </span> <span class="text">Ready for pickup</span> </div>
+
+
                     </div>
 
-                    
+
+
                     <hr>
 
                     <ul class="row">
                         {{#each this.products.product}}
                         <li class="col-lg-4 col-sm-6">
                             <figure class="itemside mb-3">
-                                <div class="aside"><img
-                                        src="/images/product-images/{{this.itemId}}.{{this.imgExt}}"
+                                <div class="aside"><img src="/images/product-images/{{this.itemId}}.{{this.imgExt}}"
                                         class="img-sm"></div>
                                 <figcaption class="info align-self-center">
                                     <p class="title">{{this.name}} <br>Price: ₹.{{this.price}}</p>
 
-                                   <button onclick="showOrderProduct('{{this.itemId}}','{{this.quantity}}')"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal__2"
-                                            class="order-prod-btn"><i class="fa-solid fa-circle-info"></i>
-                                            Show Details</button>
+                                    <button onclick="showOrderProduct('{{this.itemId}}','{{this.quantity}}')"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal__2"
+                                        class="order-prod-btn"><i class="fa-solid fa-circle-info"></i>
+                                        Show Details</button>
                                 </figcaption>
                             </figure>
                         </li>
@@ -95,7 +109,8 @@
 
             {{/each}}
             <br>
-            <a href="/" class="btn odr-return-btn" data-abc="true"> <i class="fa fa-chevron-left" style="margin-right: 10px;"></i> return to home</a>
+            <a href="/" class="btn odr-return-btn" data-abc="true"> <i class="fa fa-chevron-left"
+                    style="margin-right: 10px;"></i> return to home</a>
         </div>
     </div>
 </section>
@@ -109,33 +124,35 @@
     <!-- Modal -->
     <div class="modal fade" id="exampleModal__2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
-            <div class="modal-content" style="background-image: radial-gradient( rgba(255, 235, 241, 0.884),rgb(255, 255, 255) ), url(images/modal-bg.jpg);">
+            <div class="modal-content"
+                style="background-image: radial-gradient( rgba(255, 235, 241, 0.884),rgb(255, 255, 255) ), url(images/modal-bg.jpg);">
                 <div class="modal-header">
-                <h1 class="modal-title fs-5"><span id="odr-popup-product-title-2">Modal title</span>
-                <p id="odr-popup-product-subtitle-2" style="font-size: 12px;">ordered within 2 hours</p></h1>
-                
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-body-l">
-                    <img id="modal-image" src="" alt="" style="width: 160px; height: auto;">
-                    
-                    <div class="modal-ratings" style="margin-bottom: 16px;">
-                        <span style="font-size: 18px;">&#9733; &#9733; &#9733; &#9734; &#9734;</span>
-                    </div>
+                    <h1 class="modal-title fs-5"><span id="odr-popup-product-title-2">Modal title</span>
+                        <p id="odr-popup-product-subtitle-2" style="font-size: 12px;">ordered within 2 hours</p>
+                    </h1>
 
-                
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body-r">
-                    <h5>Name : <span id="odr-popup-product-name"></span></h5>
-                    <h5>Price : ₹.<span id="odr-popup-product-price"></span></h5>
-                    <h5>Quantity : <span id="odr-popup-product-quant"></span></h5>
-                    <h5>Category : <span id="odr-popup-product-categ"></span></h5>
-                    <h5>Description : <span id="odr-popup-product-desc"></span></h5>
-                    
-                    
+                <div class="modal-body">
+                    <div class="modal-body-l">
+                        <img id="modal-image" src="" alt="" style="width: 160px; height: auto;">
+
+                        <div class="modal-ratings" style="margin-bottom: 16px;">
+                            <span style="font-size: 18px;">&#9733; &#9733; &#9733; &#9734; &#9734;</span>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-body-r">
+                        <h5>Name : <span id="odr-popup-product-name"></span></h5>
+                        <h5>Price : ₹.<span id="odr-popup-product-price"></span></h5>
+                        <h5>Quantity : <span id="odr-popup-product-quant"></span></h5>
+                        <h5>Category : <span id="odr-popup-product-categ"></span></h5>
+                        <h5>Description : <span id="odr-popup-product-desc"></span></h5>
+
+
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
 </section>

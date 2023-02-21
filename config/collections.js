@@ -9,5 +9,6 @@ module.exports={
     BANNER_COLLECTION:'banners',
     MESSAGE_COLLECTION:'messages',
     ADMIN_ANSWERS_COLLECTION:'answeredMessages',
-    FAQS_COLLECTION:'faqs'
+    FAQS_COLLECTION:'faqs',
+    ORDER_TRACKING_COLLECTION:'orderTracking'
 }

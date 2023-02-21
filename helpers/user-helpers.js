@@ -304,9 +304,13 @@ module.exports = {
             }
 
             db.get().collection(collections.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
-                console.log(orderObj);
-                db.get().collection(collections.CART_COLLECTION).deleteOne({user:objectId(order.userId)})
-                resolve()
+                db.get().collection(collections.ORDER_TRACKING_COLLECTION).insertOne({
+                    orderId:response.insertedId,
+                    l1:"checked"
+                }).then(()=>{
+                    db.get().collection(collections.CART_COLLECTION).deleteOne({user:objectId(order.userId)})
+                    resolve()
+                })
             })
         })
     },
@@ -456,5 +460,65 @@ module.exports = {
             resolve()
         })
     })
-   }
+   },
+   getUserOrderInAdmin:(orderId)=>{
+    return new Promise(async (resolve,reject)=>{
+        let data=await db.get().collection(collections.ORDER_COLLECTION).findOne({_id:ObjectId(orderId)})
+        resolve(data)
+    })
+   },
+   addTrackDetails:(data)=>{
+    return new Promise(async (resolve,reject)=>{
+        data.orderId=new ObjectId(data.orderId)
+        let obj=await db.get().collection(collections.ORDER_TRACKING_COLLECTION).findOne({orderId:ObjectId(data.orderId)})
+        if(obj){
+            db.get().collection(collections.ORDER_TRACKING_COLLECTION).replaceOne({orderId:ObjectId(data.orderId)},data).then(()=>{
+                resolve()
+            }) 
+        }else{
+           db.get().collection(collections.ORDER_TRACKING_COLLECTION).insertOne(data).then(()=>{
+            resolve()
+        }) 
+        }  
+    })
+   },
+   findTrackDetails:(orderId)=>{
+    return new Promise(async (resolve,reject)=>{
+        let data=await db.get().collection(collections.ORDER_TRACKING_COLLECTION).findOne({orderId:ObjectId(orderId)})
+        resolve(data)
+        //console.log(data);
+    })
+   },
+    /*getTrackDetailsForUser:()=>{
+    return new Promise(async (resolve,reject)=>{
+        //console.log(size);
+       var trackDetails=[]
+        for(let i=0;i<size;i++){
+            trackDetails =await db.get().collection(collections.ORDER_TRACKING_COLLECTION).findOne({orderId:data[i]._id})
+            console.log(trackDetails);
+        }
+        let trackDetails=await db.get().collection(collections.ORDER_TRACKING_COLLECTION).aggregate([
+            {
+                $lookup: {
+                    from: collections.ORDER_COLLECTION,
+                    localField:'orderId',
+                    foreignField:'_id',
+                    as:'data'
+                }
+            }  
+        ]).toArray()
+        //console.log(trackDetails);
+        resolve(trackDetails)
+    })
+   }*/
+   findTrackDetailsUser:(orderId)=>{
+    return new Promise(async (resolve,reject)=>{
+        let id=orderId.toString()
+        db.get().collection(collections.ORDER_TRACKING_COLLECTION).findOne({orderId:ObjectId(id)}).then((response)=>{
+           resolve(response)
+            
+        })
+        //console.log(data);
+    })
+   },
 }

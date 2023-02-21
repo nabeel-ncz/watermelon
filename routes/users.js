@@ -230,4 +230,9 @@ router.get('/about',async (req,res)=>{
   }
   
 })
+router.get('/show-tracking/',(req,res)=>{
+  userHelpers.findTrackDetailsUser(req.query.id).then((response)=>{
+    res.json(response)
+  })
+})
 module.exports = router;

@@ -26,7 +26,7 @@
                    
                     <tr style="background-color: rgb(234, 246, 236) ; font-size: small; ">
 
-                        <td data-label="Id">{{this._id}}</td>
+                        <td data-label="Id">{{@index}}</td>
                         <td data-label="Date">{{this.deliveryDetails.current_date}}</td>
                         <td data-label="User">{{this.deliveryDetails.email}} <br>{{this.deliveryDetails.phone}}</td>
                         <td data-label="Address">{{this.deliveryDetails.address}} <br>
@@ -39,7 +39,7 @@
                         <td data-label="Total">₹.{{this.totalPrice}}</td>
                         <td data-label="Payment">{{this.paymentMethod}}</td>
                         <td data-label="Status">{{this.status}}</td>
-                        <td data-label="Options"><a href="" class="btn btn-dark" style="font-size: x-small;">Track</a></td>
+                        <td data-label="Options"><a href="/admin/track-order?id={{this._id}}" class="btn btn-dark" style="font-size: x-small;">Track</a></td>
                     </tr>
                    
                     {{/each}}

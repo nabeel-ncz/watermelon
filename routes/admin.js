@@ -149,6 +149,15 @@ router.get('/remove-from-messages/',(req,res)=>{
     res.redirect('/admin/admin-messages')
   })
 })
-
-
+router.get('/track-order/',async(req,res)=>{
+  let userOrder=await userHelpers.getUserOrderInAdmin(req.query.id)
+  //console.log(userOrder._id);
+  let trackDetails=await userHelpers.findTrackDetails(userOrder._id)
+  res.render('admin/track-orders',{admin:req.session.admin,userOrder,trackDetails})
+})
+router.post('/track-order',async(req,res)=>{
+  userHelpers.addTrackDetails(req.body).then(()=>{
+    res.redirect('/admin/')
+  })
+})
 module.exports = router;

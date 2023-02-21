@@ -1,0 +1,133 @@
+<section>
+    <div class="container-fluid"
+        style="padding-left: 90px; width: 100%;height: 80vh; display: flex;flex-direction: column; align-items: center;justify-content: center;">
+        <div class="order-tracking-container">
+            <div class="card" style="border: none;">
+                <div class="card-body row">
+                    <div class="col-12 col-md-6 col-lg-4 order-details-col-same">
+                        <h6><span style="font-weight: 500;">Order Id</span><br><span style="font-weight: 300;">{{userOrder._id}}</span>
+                        </h6>
+                        <h6><span style="font-weight: 500;">Order Placed:</span><br><span
+                                style="font-weight: 300;">{{userOrder.deliveryDetails.current_date}}</span></h6>
+                        <h6><span style="font-weight: 500;">Estimated Date:</span><br><span
+                                style="font-weight: 300;">{{userOrder.deliveryDetails.expected_date}} {{userOrder.deliveryDetails.expected_time}}</span>
+                        </h6>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4  order-details-col-same">
+                        <h6><span style="font-weight: 500;">Name : </span><span
+                                style="font-weight: 300;">{{userOrder.deliveryDetails.name}}</span>
+                            <br><span style="font-weight: 500;">Email : </span><span
+                                style="font-weight: 300;">{{userOrder.deliveryDetails.email}}</span>
+                            <br><span style="font-weight: 500;">Address : </span><span
+                                style="font-weight: 300;">{{userOrder.deliveryDetails.address}}</span>
+                            <br><span style="font-weight: 500;">Pincode : </span><span
+                                style="font-weight: 300;">{{userOrder.deliveryDetails.pincode}}</span>
+                            <br><span style="font-weight: 500;">Mobile : </span><span
+                                style="font-weight: 300;">{{userOrder.deliveryDetails.phone}}</span>
+                        </h6>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4  order-details-col-same">
+                        <h6>
+                            <span style="font-weight: 500;">No of products : </span>
+                            <span style="font-weight: 300;">{{userOrder.products.product.length}}</span><br>
+                            <span style="font-weight: 500;">Product details :</span>
+                            <span style="font-weight: 300;"><br>
+                                {{#each userOrder.products.product}}
+                                
+                                <span>name : <a href="">{{this.name}}</a></span>
+                                <span>nos : {{this.quantity}}</span>
+                                <br>
+                                {{/each}}
+                            </span>
+                            <span style="font-weight: 500;">Grand Total:</span>
+                            <span style="font-weight: 300;">{{userOrder.totalPrice}}</span><br>
+                            <span style="font-weight: 500;">Order Status:</span>
+                            <span style="font-weight: 300;">{{userOrder.status}}</span>
+                        </h6>
+                    </div>
+
+                </div>
+                <div class="row p-2">
+                    <div class="col-12 col-md-12">
+                        <h6>Track</h6>
+                        <form action="/admin/track-order" method="post" enctype="multipart/form-data">
+                        <input type="text" name="orderId" id="" value="{{userOrder._id}}" style="display: none;">
+
+                            <label class="custom-check-box-container">Order confirmed
+                                <input type="checkbox" name="l1" value="checked" {{trackDetails.l1}}>
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <label class="custom-check-box-container">Picked by courier
+                                <input type="checkbox" name="l2" value="checked" {{trackDetails.l2}}>
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <label class="custom-check-box-container">On the way
+                                <input type="checkbox" name="l3" value="checked" {{trackDetails.l3}}>
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <label class="custom-check-box-container">Ready for pickup
+                                <input type="checkbox" name="l4" value="checked" {{trackDetails.l4}}>
+                                <span class="checkmark"></span>
+                            </label>
+                            <a href="/admin/view-orders-admin" class="btn btn-dark mt-2">Back</a>
+                            <button type="submit" class="btn btn-warning mt-2">Save</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<style>
+    .order-tracking-container {
+        border: 1px dashed #333;
+        border-radius: 18px;
+        padding: 10px 10px;
+    }
+    .order-tracking-container label{
+        font-size: 16px;
+        overflow: hidden;
+    }
+    .order-tracking-container span{
+        font-size: 14px;
+    }
+    .order-tracking-container .btn{
+            font-size: 12px;
+            padding: 4px 8px;
+    }
+    .order-tracking-container h6 {
+            overflow: hidden;
+    }
+
+    @media screen and (max-width: 780px) {
+        .order-tracking-container .card span {
+            font-size: 8px;
+        }
+        .order-tracking-container h6 {
+            overflow: hidden;
+        }
+        .order-tracking-container label {
+            font-size: 12px;
+            overflow: hidden;
+        }
+        .order-tracking-container .btn{
+            font-size: 8px;
+            padding: 4px 8px;
+        }
+
+        .custom-check-box-container .checkmark {
+            height: 20px;
+            width: 20px;
+        }
+
+        .custom-check-box-container .checkmark:after {
+            left: 8px;
+            top: 3px;
+        }
+    }
+</style>

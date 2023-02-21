@@ -24,22 +24,22 @@ function menuBtnChange() {
     }
 }
 
-document.querySelector('#main-search-box'). addEventListener('input', filterList);
-function filterList(){
-const searchInput =document.querySelector('#main-search-box');
-const filter = searchInput.value.toLowerCase()
-const listItems = document.querySelectorAll('.header-search-prod-name');
+document.querySelector('#main-search-box').addEventListener('input', filterList);
+function filterList() {
+    const searchInput = document.querySelector('#main-search-box');
+    const filter = searchInput.value.toLowerCase()
+    const listItems = document.querySelectorAll('.header-search-prod-name');
 
-listItems.forEach((item) =>{
-let text = item.textContent;
+    listItems.forEach((item) => {
+        let text = item.textContent;
 
-if(text.toLowerCase().includes (filter.toLowerCase())){ 
-    item.style.display =''
-}else{
-item.style.display = 'none';
+        if (text.toLowerCase().includes(filter.toLowerCase())) {
+            item.style.display = ''
+        } else {
+            item.style.display = 'none';
 
-}
-});
+        }
+    });
 }
 
 /*
@@ -60,33 +60,33 @@ function viewImage(event) {
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
     'use strict'
-  
-    window.addEventListener('load', function () {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation')
-  
-      // Loop over them and prevent submission
-      Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener('submit', function (event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-          form.classList.add('was-validated')
-        }, false)
-      })
-    }, false)
-  }())
 
-  $("#main-search-box").focus(function(){
+    window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+    }, false)
+}())
+
+$("#main-search-box").focus(function () {
     $(".main-search-box-span").css("display", "block")
-  });
-    $('#btn').click(()=>{
-        $('.main-search-box-span').css('display','none')
-    })
-    $('.bx-search').click(()=>{
-        $('.main-search-box-span').css('display','none')
-    })
+});
+$('#btn').click(() => {
+    $('.main-search-box-span').css('display', 'none')
+})
+$('.bx-search').click(() => {
+    $('.main-search-box-span').css('display', 'none')
+})
 
 
 //==========for order page===[
@@ -104,7 +104,7 @@ let year = date.getFullYear();
 // This arrangement can be altered based on how we want the date's format to appear.
 let currentDate = `${day}-${month}-${year}`;*/
 let today = new Date().toISOString().split('T')[0]
-let todayForCurrent =new Date()
+let todayForCurrent = new Date()
 //console.log(todayForCurrent);
 $("#Desired-date").val(today)
 $("#current-date").val(todayForCurrent)
@@ -125,22 +125,22 @@ function productCategoryClick(categId){
 }
 */
 //==========for order page===]
-function productCategoryClick(category,categId){
+function productCategoryClick(category, categId) {
     $.ajax({
-        url:'/get-category-products?categ='+category,
-        method:'get',
-        success:(response)=>{
-        $('.prodCardAll').css("display","none")
+        url: '/get-category-products?categ=' + category,
+        method: 'get',
+        success: (response) => {
+            $('.prodCardAll').css("display", "none")
 
-           $.each(response,(key,value)=>{
-                $('#prodCard'+value._id).css("display","flex")
-           })
+            $.each(response, (key, value) => {
+                $('#prodCard' + value._id).css("display", "flex")
+            })
         }
     })
 }
 
 function popupDetails(productId) {
-    
+
 
     $.ajax({
         url: '/popup-product-details',
@@ -151,20 +151,20 @@ function popupDetails(productId) {
         success: (response) => {
             if (response) {
 
-                
-                    //let Tiltle = response.Name
-                    $('#modalTitleMain').html("Order Now")
-                    $('#modalTitleSub').html("free delivery available now !")
-                    let Name=response.Name
-                    $('#popup-product-name').html(Name)
-                    let Price=response.Price
-                    $('#popup-product-price').html(Price)
-                    let Description=response.Description
-                    $('#popup-product-desc').html(Description)
-                    let id=response._id
-                    let imageExt="."+response.imageExt
-                    let path="/images/product-images/"
-                    $("#modal-image").attr("src",path+id+imageExt);
+
+                //let Tiltle = response.Name
+                $('#modalTitleMain').html("Order Now")
+                $('#modalTitleSub').html("free delivery available now !")
+                let Name = response.Name
+                $('#popup-product-name').html(Name)
+                let Price = response.Price
+                $('#popup-product-price').html(Price)
+                let Description = response.Description
+                $('#popup-product-desc').html(Description)
+                let id = response._id
+                let imageExt = "." + response.imageExt
+                let path = "/images/product-images/"
+                $("#modal-image").attr("src", path + id + imageExt);
                 //alert(response)
                 //setTimeout(()=>{
                 // location.reload()
@@ -175,9 +175,9 @@ function popupDetails(productId) {
     })
 }
 
-function sendReplay(queId){
+function sendReplay(queId) {
     $.ajax({
-        url: '/admin/show-sending-form?id='+queId,
+        url: '/admin/show-sending-form?id=' + queId,
         method: 'get',
         success: (response) => {
             if (response) {
@@ -190,20 +190,20 @@ function sendReplay(queId){
         }
     })
 }
-function removeFromUserMessages(id){
+function removeFromUserMessages(id) {
     $.ajax({
-        url: '/remove-from-user-messages?id='+id,
+        url: '/remove-from-user-messages?id=' + id,
         method: 'get',
         success: (response) => {
-            if(response.Status){
+            if (response.Status) {
                 location.reload()
             }
         }
     })
 }
 
-function showOrderProduct(product,quantity) {
-    
+function showOrderProduct(product, quantity) {
+
     $.ajax({
         url: '/show-order-product-details',
         data: {
@@ -218,11 +218,11 @@ function showOrderProduct(product,quantity) {
                 $('#odr-popup-product-price').html(response.Price)
                 $('#odr-popup-product-desc').html(response.Description)
                 $('#odr-popup-product-categ').html(response.Category)
-                $('#odr-popup-product-quant').html(quantity+" nos")
-                let id=response._id
-                let imageExt="."+response.imageExt
-                let path="/images/product-images/"
-                $("#modal-image").attr("src",path+id+imageExt);
+                $('#odr-popup-product-quant').html(quantity + " nos")
+                let id = response._id
+                let imageExt = "." + response.imageExt
+                let path = "/images/product-images/"
+                $("#modal-image").attr("src", path + id + imageExt);
             }
         }
     })
@@ -248,45 +248,45 @@ function setOrderPageProducts(productId){
     })
 }
 */
-function addToCart(productId){
+function addToCart(productId) {
     $.ajax({
-        url:'/add-to-cart',
-        data:{
-            product:productId
+        url: '/add-to-cart',
+        data: {
+            product: productId
         },
-        method:'post',
-        success:(response)=>{
-            if(response.status){
-                let totalCount=$('#cart-quantity-badge').html()
-                totalCount=parseInt(totalCount)+1
+        method: 'post',
+        success: (response) => {
+            if (response.status) {
+                let totalCount = $('#cart-quantity-badge').html()
+                totalCount = parseInt(totalCount) + 1
                 $('#cart-quantity-badge').html(totalCount)
             }
         }
     })
 }
 
-function changeQuantity(cartId,productId,count,userId){
-    var quantityDivId='#'+productId
-    var quantity=$(quantityDivId).html()
-    var quantityInNum=parseInt(quantity)
+function changeQuantity(cartId, productId, count, userId) {
+    var quantityDivId = '#' + productId
+    var quantity = $(quantityDivId).html()
+    var quantityInNum = parseInt(quantity)
     //parseInt(quantity)
-    var count=parseInt(count)
+    var count = parseInt(count)
     $.ajax({
-        url:'/change-cart-item-quantity',
-        data:{
-            user:userId,
-            cartId:cartId,
-            productId:productId,
-            quantity:quantityInNum,
-            count:count
+        url: '/change-cart-item-quantity',
+        data: {
+            user: userId,
+            cartId: cartId,
+            productId: productId,
+            quantity: quantityInNum,
+            count: count
         },
-        method:'post',
-        success:(response)=>{
-            if(response.removeProduct){
+        method: 'post',
+        success: (response) => {
+            if (response.removeProduct) {
                 alert('product is removed from your cart')
                 location.reload()
-            }else{
-                $(quantityDivId).html(quantityInNum+count)
+            } else {
+                $(quantityDivId).html(quantityInNum + count)
                 $('#subtotal-amount-of-cart-product').html(response.total)
                 //console.log(response.total)
             }
@@ -294,34 +294,82 @@ function changeQuantity(cartId,productId,count,userId){
     })
 }
 
-function removeCartProduct(cartId,productId){
+function removeCartProduct(cartId, productId) {
     $.ajax({
-        url:'/remove-cart-product',
-        data:{
-            cartId:cartId,
-            productId:productId
+        url: '/remove-cart-product',
+        data: {
+            cartId: cartId,
+            productId: productId
         },
-        method:'post',
-        success:(response)=>{
+        method: 'post',
+        success: (response) => {
             alert('are you want to remove this product')
             location.reload()
         }
     })
 }
 
-$('#checkout-form').submit((event)=>{
+$('#checkout-form').submit((event) => {
     event.preventDefault()
     $.ajax({
-        url:'/checkout',
-        method:'post',
-        data:$('#checkout-form').serialize(),
-        success:(response)=>{
-            if(response.Status){
-                location.href='/order-success'
+        url: '/checkout',
+        method: 'post',
+        data: $('#checkout-form').serialize(),
+        success: (response) => {
+            if (response.Status) {
+                location.href = '/order-success'
             }
         }
     })
 })
+
+function showTracking(orderId) {
+    $.ajax({
+        url: '/show-tracking?id=' + orderId,
+        method: 'get',
+        success: (response) => {
+            let arrow = $('.track-arrow'+orderId)
+            let trackBox = $('.user-order-tracking' + orderId)
+            function toggleTrack(){
+                trackBox.toggle('.display-flex-custom')
+            }
+            function arrowChange() {
+                if(arrow.hasClass("fa-angle-down")){
+                    arrow.removeClass("fa-angle-down")
+                    arrow.addClass("fa-angle-up")
+                }else{
+                    arrow.removeClass("fa-angle-up")
+                    arrow.addClass("fa-angle-down")
+                }
+                
+            }
+            if (response) {
+                toggleTrack()
+                arrowChange()
+
+                if (response.l1 == "checked") {
+                    $(".tracking-step-1" + orderId).addClass("active");
+                }
+                if (response.l1 == "checked" && response.l2 == "checked") {
+                    $(".tracking-step-1" + orderId).addClass("active");
+                    $(".tracking-step-2" + orderId).addClass("active");
+                }
+                if (response.l1 == "checked" && response.l2 == "checked" && response.l3 == "checked") {
+                    $(".tracking-step-1" + orderId).addClass("active");
+                    $(".tracking-step-2" + orderId).addClass("active");
+                    $(".tracking-step-3" + orderId).addClass("active");
+                }
+                if (response.l1 == "checked" && response.l2 == "checked" && response.l3 == "checked" && response.l4 == "checked") {
+                    $(".tracking-step-1" + orderId).addClass("active");
+                    $(".tracking-step-2" + orderId).addClass("active");
+                    $(".tracking-step-3" + orderId).addClass("active");
+                    $(".tracking-step-4" + orderId).addClass("active");
+                }
+            }
+
+        }
+    })
+}
 /*
 $('#add-category-form').submit((event)=>{
     event.preventDefault()
